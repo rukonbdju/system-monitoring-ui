@@ -211,7 +211,7 @@ export default function App() {
 
   // Real Socket.io Connection
   useEffect(() => {
-    const socket = io('http://localhost:3001');
+    const socket = io(process.env.NEXT_PUBLIC_API_URL);
 
     socket.on('connect', () => {
       console.log('Connected to monitoring server');
