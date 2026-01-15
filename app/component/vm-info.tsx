@@ -9,13 +9,15 @@ interface VMInfo {
     kernel: string;
 }
 
+const baseUrl = process.env.NEXT_PUBLIC_API_URL
+
 const VMInfoCard = () => {
     const [loading, setLoading] = useState(true)
     const [vmInfo, setVmInfo] = useState<VMInfo | null>(null)
     useEffect(() => {
         const getData = async () => {
             try {
-                const res = await fetch(process.env.NEXT_PUBLIC_API_URL + '/api/vm-info')
+                const res = await fetch(baseUrl + '/api/vm-info')
                 const result = await res.json()
                 console.log(result)
                 if (result.success) {
